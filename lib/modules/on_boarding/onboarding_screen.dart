@@ -4,7 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../shared/components/components.dart';
-import '../home_screen.dart';
+
+import '../login/login_screen.dart';
 
 class BoardingModel {
   late final String title;
@@ -54,7 +55,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         actions: [
           TextButton(
             onPressed: () {
-              boardingPageController.jumpToPage(2);
+              navigateAndFinish(context, const LoginScreen());
             },
             child: const Text(
               'Skip',
@@ -70,7 +71,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               child: PageView.builder(
                 onPageChanged: (index) {
                   setState(() {
-                    isLastPage = index == 2;
+                    isLastPage = index == boardingPages.length - 1;
                   });
                 },
                 controller: boardingPageController,
@@ -112,7 +113,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         ),
                         child: MaterialButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomeScreen()));
+                            navigateAndFinish(context, const LoginScreen());
                           },
                           child: Text(
                             'Get Started',
