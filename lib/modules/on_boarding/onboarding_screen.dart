@@ -9,13 +9,7 @@ class OnBoardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        children: [
-          buildPage('assets/images/first.png'),
-          buildPage('assets/images/second.png'),
-          buildPage('assets/images/first.png'),
-        ],
-      ),
+
     );
   }
 }
