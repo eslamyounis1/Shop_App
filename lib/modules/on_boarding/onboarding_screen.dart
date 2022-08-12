@@ -12,6 +12,10 @@ class OnBoardingScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('hi'),
       ),
+      body: Image.asset(
+        'assets/images/onboarding.jpg',
+        fit: BoxFit.cover,
+      ),
     );
   }
 }
