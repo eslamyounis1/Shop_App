@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../shared/components/components.dart';
+import '../home_screen.dart';
 
 class BoardingModel {
   late final String title;
@@ -23,10 +25,12 @@ class OnBoardingScreen extends StatefulWidget {
   State<OnBoardingScreen> createState() => _OnBoardingScreenState();
 }
 
+bool isLastPage = false;
+
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
-    PageController boardingPageController = PageController();
+    var boardingPageController = PageController();
     List<BoardingModel> boardingPages = [
       BoardingModel(
         title: 'Screen Title1',
@@ -46,13 +50,29 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     ];
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          TextButton(
+            onPressed: () {
+              boardingPageController.jumpToPage(2);
+            },
+            child: const Text(
+              'Skip',
+            ),
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Column(
           children: [
             Expanded(
               child: PageView.builder(
+                onPageChanged: (index) {
+                  setState(() {
+                    isLastPage = index == 2;
+                  });
+                },
                 controller: boardingPageController,
                 physics: BouncingScrollPhysics(),
                 itemBuilder: (context, index) =>
@@ -66,20 +86,57 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Indicator',
-                ),
-                FloatingActionButton(
-                  onPressed: () {
-                    boardingPageController.nextPage(
-                      duration: const Duration(milliseconds: 400,),
+                SmoothPageIndicator(
+                  controller: boardingPageController,
+                  count: boardingPages.length,
+                  effect: ExpandingDotsEffect(
+                    activeDotColor: Colors.deepOrange[500]!,
+                    dotColor: Colors.grey,
+                    expansionFactor: 4,
+                    dotWidth: 10.0,
+                    spacing: 5.0,
+                  ),
+                  onDotClicked: (index) {
+                    boardingPageController.animateToPage(
+                      index,
+                      duration: const Duration(milliseconds: 400),
                       curve: Curves.easeInOut,
                     );
                   },
-                  child: const Icon(
-                    Icons.navigate_next,
-                  ),
                 ),
+                isLastPage
+                    ? Container(
+                        decoration: BoxDecoration(
+                          color: Colors.deepOrange,
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: MaterialButton(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomeScreen()));
+                          },
+                          child: Text(
+                            'Get Started',
+                            style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      )
+                    : FloatingActionButton(
+                        onPressed: () {
+                          boardingPageController.nextPage(
+                            duration: const Duration(
+                              milliseconds: 400,
+                            ),
+                            curve: Curves.easeInOut,
+                          );
+                        },
+                        child: const Icon(
+                          Icons.navigate_next,
+                        ),
+                      ),
               ],
             ),
           ],
