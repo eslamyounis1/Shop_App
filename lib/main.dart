@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Shop App',
       theme: lightTheme,
       darkTheme: darkTheme,
+      themeMode: ThemeMode.light,
       home: OnBoardingScreen(),
     );
   }
