@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 ThemeData lightTheme = ThemeData(
   primarySwatch: Colors.deepOrange,
   primaryColor: Colors.white,
-  scaffoldBackgroundColor: Colors.white,
+  scaffoldBackgroundColor: HexColor('#E5E5E5'),
   appBarTheme: const AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarColor: Colors.white,

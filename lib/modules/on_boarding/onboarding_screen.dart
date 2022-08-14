@@ -36,17 +36,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       BoardingModel(
         title: 'Screen Title1',
         body: 'Screen Body1',
-        image: 'assets/images/onboarding.jpg',
+        image: 'assets/images/boarding.png',
       ),
       BoardingModel(
         title: 'Screen Title2',
         body: 'Screen Body2',
-        image: 'assets/images/onboarding.jpg',
+        image: 'assets/images/boarding.png',
       ),
       BoardingModel(
         title: 'Screen Title3',
         body: 'Screen Body3',
-        image: 'assets/images/onboarding.jpg',
+        image: 'assets/images/boarding.png',
       ),
     ];
 
@@ -75,7 +75,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   });
                 },
                 controller: boardingPageController,
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) =>
                     buildBoardingItem(boardingPages[index]),
                 itemCount: boardingPages.length,
