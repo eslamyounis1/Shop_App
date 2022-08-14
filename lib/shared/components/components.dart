@@ -53,22 +53,36 @@ Widget primaryTextField({
     Container(
       width: 343.0,
       height: 64.0,
-      child: TextFormField(
-        decoration: InputDecoration(
+      child: Material(
+        elevation: 15.0,
+        shadowColor: HexColor('#000000').withOpacity(0.25),
+        child: TextFormField(
+          decoration: InputDecoration(
+
             hintText: hintTxt,
             hintStyle: TextStyle(
               fontFamily: 'metropolis',
               fontWeight: FontWeight.w500,
               fontSize: 14.0,
               color: HexColor('#9B9B9B'),
-
             ),
             labelText: labelTxt,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(4.0),
+              borderSide: const BorderSide(
+                width: 0.8,
+              ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(4.0),
-            )),
+              borderSide: const BorderSide(
+                width: 0.8,
+                color: Colors.white,
+              ),
+            ),
+            filled: true,
+            fillColor: Colors.white,
+          ),
+        ),
       ),
     );

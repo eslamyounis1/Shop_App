@@ -5,20 +5,21 @@ import 'package:hexcolor/hexcolor.dart';
 ThemeData lightTheme = ThemeData(
   primarySwatch: Colors.deepOrange,
   primaryColor: Colors.white,
-  scaffoldBackgroundColor: HexColor('#E5E5E5'),
-  appBarTheme: const AppBarTheme(
-    systemOverlayStyle: SystemUiOverlayStyle(
+  scaffoldBackgroundColor: HexColor('#F9F9F9'),
+  appBarTheme:  AppBarTheme(
+    systemOverlayStyle: const SystemUiOverlayStyle(
       statusBarColor: Colors.white,
       statusBarIconBrightness: Brightness.dark,
     ),
-    color: Colors.white,
+
+    backgroundColor: HexColor('#F9F9F9'),
     elevation: 0.0,
-    titleTextStyle: TextStyle(
+    titleTextStyle: const TextStyle(
       color: Colors.black,
       fontSize: 20.0,
       fontWeight: FontWeight.bold,
     ),
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: Colors.black,
     ),
     titleSpacing: 20.0,
