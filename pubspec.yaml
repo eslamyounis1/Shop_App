@@ -72,7 +72,7 @@ flutter:
 
     - family: metropolis
       fonts:
-        - asset: assets/fonts/metropolis/Metropolis-Regular.otf
+        - asset: assets/fonts/metropolis/Metropolis-Bold.otf
 
 
 
