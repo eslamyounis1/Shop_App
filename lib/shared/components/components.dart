@@ -14,6 +14,7 @@ void navigateAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
 Widget primaryButton({
   required String buttonTxt,
   required Function onPressedButton,
+  bool isUpper = false,
 }) =>
     Container(
       width: 343.0,
@@ -35,7 +36,7 @@ Widget primaryButton({
           onPressedButton;
         },
         child: Text(
-          buttonTxt,
+          isUpper? buttonTxt.toUpperCase(): buttonTxt,
           style: const TextStyle(
             color: Colors.white,
             fontSize: 14.0,
@@ -48,6 +49,8 @@ Widget primaryButton({
 
 Widget primaryTextField({
   required String hintTxt,
+  required TextEditingController formController,
+  required Function validate,
   String? labelTxt,
 }) =>
     Container(
@@ -83,6 +86,11 @@ Widget primaryTextField({
             filled: true,
             fillColor: Colors.white,
           ),
+          controller: formController,
+          validator: (value){
+            validate;
+            return null;
+          },
         ),
       ),
     );

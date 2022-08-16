@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../shared/components/components.dart';
@@ -57,8 +58,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             onPressed: () {
               navigateAndFinish(context, const LoginScreen());
             },
-            child: const Text(
+            child:Text(
               'Skip',
+              style: TextStyle(
+                color: HexColor('#DB3022'),
+              ),
             ),
           ),
         ],
@@ -91,7 +95,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   controller: boardingPageController,
                   count: boardingPages.length,
                   effect: ExpandingDotsEffect(
-                    activeDotColor: Colors.deepOrange[500]!,
+                    activeDotColor: HexColor('#DB3022'),
                     dotColor: Colors.grey,
                     expansionFactor: 4,
                     dotWidth: 10.0,
@@ -108,7 +112,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 isLastPage
                     ? Container(
                         decoration: BoxDecoration(
-                          color: Colors.deepOrange,
+                          color: HexColor('#DB3022'),
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                         child: MaterialButton(
@@ -126,6 +130,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         ),
                       )
                     : FloatingActionButton(
+                  backgroundColor: HexColor('#DB3022'),
                         onPressed: () {
                           boardingPageController.nextPage(
                             duration: const Duration(
