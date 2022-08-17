@@ -11,23 +11,29 @@ class ShopLoginCubit extends Cubit<ShopLoginStates> {
 
   static ShopLoginCubit get(context) => BlocProvider.of(context);
 
-  void userLogin({
-  required String email,
+  Future<String?> userLogin({
+    required String email,
     required String password,
-}) {
+  }) async {
     emit(ShopLoginLoadingSate());
-    DioHelper.postData(
-      url: 'login',   // end point that i want to use
-      data: {
-        'email':email,
-        'password':password,
-      },
-    ).then((value) {
-      print(value.data);
-      emit(ShopLoginSuccessSate());
-    }).catchError((error){
-      print(error.toString());
-      emit(ShopLoginErrorSate(error.toString()));
-    });
+    return Future.delayed(
+
+      const Duration(seconds: 1),
+        (){
+          DioHelper.postData(
+            url: loginEndPoint, // end point that i want to use
+            data: {
+              'email': email,
+              'password': password,
+            },
+          ).then((value) {
+            debugPrint(value?.data.toString());
+            emit(ShopLoginSuccessSate());
+          }).catchError((error) {
+            emit(ShopLoginErrorSate(error.toString()));
+          });
+        }
+    );
+
   }
 }
