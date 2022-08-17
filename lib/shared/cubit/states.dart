@@ -1,8 +1,8 @@
-abstract class ShopLoginState{}
-class ShopLoginInitialSate extends ShopLoginState {}
-class ShopLoginLoadingSate extends ShopLoginState {}
-class ShopLoginSuccessSate extends ShopLoginState {}
-class ShopLoginErrorSate extends ShopLoginState {
+abstract class ShopLoginStates{}
+class ShopLoginInitialSate extends ShopLoginStates {}
+class ShopLoginLoadingSate extends ShopLoginStates {}
+class ShopLoginSuccessSate extends ShopLoginStates {}
+class ShopLoginErrorSate extends ShopLoginStates {
 
   late final String error;
   ShopLoginErrorSate(this.error);

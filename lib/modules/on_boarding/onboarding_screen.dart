@@ -56,7 +56,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         actions: [
           TextButton(
             onPressed: () {
-              navigateAndFinish(context, const LoginScreen());
+              navigateAndFinish(context,  LoginScreen());
             },
             child:Text(
               'Skip',
@@ -117,7 +117,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         ),
                         child: MaterialButton(
                           onPressed: () {
-                            navigateAndFinish(context, const LoginScreen());
+                            navigateAndFinish(context,  LoginScreen());
                           },
                           child: Text(
                             'Get Started',

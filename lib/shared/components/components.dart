@@ -33,7 +33,7 @@ Widget primaryButton({
       ),
       child: MaterialButton(
         onPressed: () {
-          onPressedButton;
+          onPressedButton();
         },
         child: Text(
           isUpper? buttonTxt.toUpperCase(): buttonTxt,
@@ -88,8 +88,8 @@ Widget primaryTextField({
           ),
           controller: formController,
           validator: (value){
-            validate;
-            return null;
+           return validate(value) ;
+
           },
         ),
       ),
